@@ -1,0 +1,20 @@
+{
+  "name": "ncn-web",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ck101000xx/ncn-web",
+  "authors": [
+    "ck101000xx <ck101000xx@gmail.com>"
+  ],
+  "description": "A web client for NCN",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "<2"
+  }
+}
