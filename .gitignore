@@ -1,4 +1,1 @@
-.DS_Store
-packages
-.project
-pubspec.lock
+bower_components
