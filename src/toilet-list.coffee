@@ -1,5 +1,6 @@
 riot = require('riot')
 React = require('react')
+NCN = require('./ncn')
 
 LocationInput = React.createClass
   render: -> `(
@@ -20,18 +21,7 @@ ToiletList = React.createClass
   render: ->
     items = (`(<ToiletItem name={name} address={address} />)` for {address, name} in @state.toilets)
     `(
-      <div>
-        <ul>
-          {items}
-        </ul>
-      </div>
+      <ul>
+        {items}
+      </ul>
     )`
-
-class ToiletListApp
-  constructor: ->
-    @locationInput = `<LocationInput />`
-    @toiletList = `<ToiletList />`
-    riot.observable @
-    return
-
-  
