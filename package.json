@@ -1,0 +1,25 @@
+{
+  "name": "ncn-web",
+  "version": "0.0.0",
+  "description": "A web client for NCN",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ck101000xx/ncn-web.git"
+  },
+  "author": "ck101000xx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ck101000xx/ncn-web/issues"
+  },
+  "homepage": "https://github.com/ck101000xx/ncn-web",
+  "devDependencies": {
+    "grunt": "~0",
+    "grunt-contrib-coffee": "~0",
+    "grunt-browserify": "~1",
+    "coffeeify": "~0.6.0",
+    "reactify": "~0.7.0"
+  }
+}
