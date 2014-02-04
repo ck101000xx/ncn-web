@@ -1,9 +1,7 @@
-riot = require 'riot'
 Q = require 'q'
 
 class NCN
-  constructor: (@host = '') ->
-    riot.observble @
+  constructor: (@host = '') -> return
   request = (method, url, data) ->
     deferred = Q.defer()
     x = new XMLHttpRequest()
@@ -19,7 +17,7 @@ class NCN
         if _.isObject obj
         then buildParam(key + '.', value)
         else encodeURIComponent(prefix + key) + '=' + encodeURIComponent(value)
-    _.fltten(buildParam(data)).join('&')
+    _.fltten(buildParam('', data)).join('&')
     prefix = if _.contains(path '?') then '?' else ':'
     request('GET', @host + path + prefix + qs)
   post: (path, data) -> request('POST', @host + path, data)

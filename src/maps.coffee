@@ -1,10 +1,8 @@
-riot = require('riot')
 Q = require('q')
 
 class GeoCoder
   constructor: () ->
     @geocoder = new google.maps.Geocoder()
-    riot.observable @
   code: (request) ->
     deferred = Q.defer()
     @geocoder.geocode request, (results, status) ->
