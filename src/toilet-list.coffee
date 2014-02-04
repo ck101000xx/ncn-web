@@ -18,7 +18,7 @@ ToiletList = React.createClass
   getInitialState: ->
     toilets: []
   render: ->
-    items = (`(<ToiletItem name={name} address={address} />)` for {address, name} in @toilets)
+    items = (`(<ToiletItem name={name} address={address} />)` for {address, name} in @state.toilets)
     `(
       <div>
         <ul>
