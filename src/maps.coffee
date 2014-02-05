@@ -1,10 +1,11 @@
-Q = require('q')
+$ = require('jquery')
+Bacon = require('bacon')
 
 class GeoCoder
   constructor: () ->
     @geocoder = new google.maps.Geocoder()
   code: (request) ->
-    deferred = Q.defer()
+    deferred = $.Deferred()
     @geocoder.geocode request, (results, status) ->
       if status is google.maps.GeocoderStatus.OK
         deferred.resolve results.map (result) ->
@@ -14,10 +15,18 @@ class GeoCoder
             latitude:  result.geometry.loaction.lat()
       else
         deferred.reject status
-    deferred.promise
+    Bacon.fromPromise deferred
   codeAddress: (address) ->
     @code address: address
   codeLocation: (location) ->
     @code location: google.maps.LatLng(location.latitude, location.longitude)
 
-exports = {GeoCoder}
+class CurrentLocation
+  constructor: ->
+    stream = Bacon.fromBinder (sink) ->
+      navigator.geolocation.watchPosition(
+        (coords:{longitude, latitude}) -> sink {longitude, lataiude}
+        (e) -> sink new Bacon.Error(e)
+    @location = stream.toProperty()
+
+module.exports = {GeoCoder, CurrentLocation}
