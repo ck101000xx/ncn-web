@@ -3,7 +3,9 @@ $ = require 'jquery'
 
 class NCN
   constructor: (@host = '') ->
+    @toilets = new NCN @host + '/toilets'
   request = (method) -> (path, data) ->
+    [path, data] = [@host, path] unless data?
     Bacon.fromPromise(
       $.ajax @host + path,
         data: data
