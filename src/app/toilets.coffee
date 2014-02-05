@@ -1,7 +1,7 @@
 Bacon = require 'bacon'
 React = require 'react'
-{ToiletList} = require 'ui/toilet-list'
-{LocationInput} = require 'ui/location-input'
+{ToiletList} = require '../ui/toilet-list.coffee'
+{LocationInput} = require '../ui/location-input.coffee'
 
 LocationInputApp = React.CreateClass
   getDefaultProps: ->
