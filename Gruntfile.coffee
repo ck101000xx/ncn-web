@@ -3,22 +3,9 @@ module.exports = (grunt) ->
     browserify:
       build:
         files:
-          'build/js/ncn.js': 'src/ncn.coffee'
-          'build/js/toilet-list.js': 'src/toilet-list.coffee'
+          'build/js/toilets.js': 'src/app/toilets.coffee'
         options:
           transform: ['coffeeify', 'reactify/undoubted']
-          shim:
-            riot:
-              path: 'bower_components/riotjs/riot.js'
-              exports: '$'
-            underscore:
-              path: 'bower_components/underscore/underscore.js'
-              exports: '_'
-            q:
-              path: 'bower_components/q/q.js'
-              exports: 'Q'
-            react:
-              path: 'bower_components/react/react.min.js'
-              exports: 'React'
+          shim: grunt.file.readYAML('shim.yaml')
   grunt.loadNpmTasks 'grunt-browserify'
   grunt.registerTask 'dev', ['browserify']
