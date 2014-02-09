@@ -14,7 +14,8 @@ class ToiletsCtrl
   onSubmit: (address) ->
     @geocoder.codeAddress(address)
       .then ([{location}]) =>
-        @ncn.toilets.get {center:location, radius:2500}
+        @ncn.toilets.get
+          circle: ($.extend location, radius: 2500)
       .then (list) =>
         @view.setState list: list
       .done()
