@@ -1,22 +1,24 @@
 `/** @jsx React.DOM */`
+React = require 'react'
+
 ToiletItem = React.createClass
+  onClick: ->
+    @props.onClick @props.toilet
   render: -> `(
-    <li onClick={this.props.clicks.push}>
-      {this.props.toilet.name} {this.props.toilet.address}
+    <li onClick={this.onClick}>
+      <a href="#">
+        {this.props.toilet.name} {this.props.toilet.address}
+        <span className="chevron"></span>
+      </a>
     </li>
   )`
 
 ToiletList = React.createClass
-  getInitialState:
-    toilets: []
-  componentDidMount:
-    @props.toilets.onValue (ts) ->
-      @setState toilets: ts
   render: ->
-    items = @state.toilets.map (toilet) ->
-      `<ToiletItem toilet={toilet} clicks={this.props.selects} />`
+    items =
+      `<ToiletItem toilet={toilet} onClick={this.props.onSelect}/>` for toilet in @props.list
     return `(
-      <ul>
+      <ul className="list">
         {items}
       </ul>
     )`

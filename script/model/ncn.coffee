@@ -1,19 +1,22 @@
-Bacon = require 'bacon'
 $ = require 'jquery'
+Q = require 'q'
 
-class NCN
+class NCNClient
   constructor: (@host = '') ->
-    @toilets = new NCN @host + '/toilets'
   request = (method) -> (path, data) ->
     [path, data] = [@host, path] unless data?
-    Bacon.fromPromise(
-      $.ajax @host + path,
+    Q($.ajax @host + path,
         data: data
         type: method
-        dataType: 'json')
+        dataType: 'json'
+    )
   get: request 'GET'
   post: request 'POST'
   delete: request 'DELETE'
   put: request 'PUT'
 
-module.exports = NCN
+class NCN extends NCNClient
+  constructor: (@host = '') ->
+    @toilets = new NCNClient @host + '/toilets'
+
+module.exports = {NCN}

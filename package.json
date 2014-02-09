@@ -1,6 +1,6 @@
 {
   "name": "ncn-web",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A web client for NCN",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +21,17 @@
     "gulp-util": "~2.2.14",
     "gulp": "~3.5.2",
     "coffee-script": "~1.7.1",
-    "gulp-browserify": "~0.4.2"
+    "gulp-browserify": "~0.4.2",
+    "browserify": "~3.24.13",
+    "browserify-shim": "~3.2.2",
+    "gulp-concat": "~2.1.7",
+    "gulp-jade": "~0.4.1",
+    "gulp-clean": "~0.2.4"
+  },
+  "browserify-shim": {
+    "jquery": "global:$",
+    "react": "global:React",
+    "q": "global:Q",
+    "google": "global:google"
   }
 }

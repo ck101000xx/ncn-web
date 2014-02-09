@@ -1,0 +1,22 @@
+{
+  "name": "ncn-web",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ck101000xx/ncn-web",
+  "authors": [
+    "ck101000xx <ck101000xx@gmail.com>"
+  ],
+  "license": "BSD3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "react": "~0.8.0",
+    "q": "~1.0.0",
+    "ratchet": "~1.0.2"
+  }
+}

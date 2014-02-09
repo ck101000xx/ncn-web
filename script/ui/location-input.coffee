@@ -1,21 +1,14 @@
 `/** @jsx React.DOM */`
+React = require 'react'
+
 LocationInput = React.createClass
-  componentWillMount: ->
-    @keys = new Bacon.Bus
-    @changes = new Bacon.Bus
-    @clicks = new Bacon.Bus
-    enters = @keys
-      .map '.keyCode'
-      .filter (code) -> code is 13
-    submits = @changes
-      .map '.target.value'
-      .toProperty()
-      .smapledBy @clicks.merge enters
-    @props.submits.plug submits
+  onSubmit: (e) ->
+    do e.preventDefault
+    @props.onSubmit @refs.input.getDOMNode().value
   render: -> `(
-    <form>
-      <input type="text" onChange={this.changes.push} onKeyPress={this.keys.push}></input>
-      <input type="button" onClick={this.clicks.push}></input>
+    <form onSubmit={this.onSubmit}>
+      <input ref="input" type="text"></input>
+      <input type="submit"></input>
     </form>
   )`
 
